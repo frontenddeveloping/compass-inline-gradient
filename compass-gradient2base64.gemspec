@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'gradient2base64/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "compass-string2base64"
+  spec.name          = "compass-gradient2base64"
   spec.version       = Gradient2base64::VERSION
   spec.authors       = ["Alexander Pinchuk"]
   spec.email         = ["front.end.developing@gmail.com"]
@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sass"
   spec.add_development_dependency "compass"
   spec.add_development_dependency "rmagick"
+  spec.add_development_dependency "tinypng"
 end
