@@ -1,3 +1,3 @@
-module Gradient2base64
+module InlineGradient
     VERSION = "0.0.1"
 end
