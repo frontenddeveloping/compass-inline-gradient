@@ -46,6 +46,7 @@ $randbow-step : 100.0/6;
     background: linear-gradient(to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
   }
 }
+
 .result-rotated {
   .sass-gradient,
   .native-gradient {
@@ -58,5 +59,20 @@ $randbow-step : 100.0/6;
 
   .native-gradient {
     background: linear-gradient(135deg, #f90 0%, #000 100%);
+  }
+}
+
+.result-rotated-complex {
+  .sass-gradient,
+  .native-gradient {
+    height: 100px;
+    width: 200px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient(linear, 200, 100, -23deg, #c0c000 0%, #963 100%);
+  }
+
+  .native-gradient {
+    background: linear-gradient(-23deg, #c0c000 0%, #963 100%);
   }
 }
