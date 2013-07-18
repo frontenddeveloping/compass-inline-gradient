@@ -1,0 +1,85 @@
+/* line 3, ../sass/theme.scss */
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+/* line 9, ../sass/theme.scss */
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+/* line 14, ../sass/theme.scss */
+body {
+  font: 14px/normal Helvetica, Arial, sans-serif;
+}
+
+/* line 18, ../sass/theme.scss */
+.code, .inline-code {
+  font: 12px/14px monospace, sans-serif;
+}
+
+/* line 22, ../sass/theme.scss */
+.code {
+  clear: both;
+  margin-right: 20px;
+}
+
+/* line 27, ../sass/theme.scss */
+.inline-code {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #db0;
+  display: inline-block;
+  margin: 2px 0;
+  padding: 2px 4px;
+}
+
+/* line 36, ../sass/theme.scss */
+.examples {
+  overflow: hidden;
+  border-right: 1px solid #ddd;
+  margin-right: 400px;
+}
+
+/* line 42, ../sass/theme.scss */
+.example {
+  padding: 20px 10px;
+}
+/* line 44, ../sass/theme.scss */
+.example h2 {
+  font-family: Georgia;
+  font-size: 21px;
+  font-weight: lighter;
+  padding-bottom: 20px;
+}
+
+/* line 52, ../sass/theme.scss */
+.result {
+  border: 1px solid #ddd;
+  float: left;
+  margin-bottom: 20px;
+}
+
+/* line 58, ../sass/theme.scss */
+.description {
+  padding: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+/* line 63, ../sass/theme.scss */
+.annotation {
+  background-color: lemonchiffon;
+  border-left: 1px solid #ddd;
+  float: right;
+  margin-left: -1px;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+}

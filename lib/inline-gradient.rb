@@ -76,12 +76,11 @@ def image2base64(image)
 end
 
 DEFAULT_CONTENT_TYPE = "image/png"
-DEFAULT_TYPE = "linear"
+DEFAULT_TYPE = Sass::Script::String.new "linear"
 DEFAULT_ANGLE = "to left"
 DEFAULT_COLOR_STOPS = ["#FFF 0%", "#000 100%"]
-DEFAULT_WIDTH = 100
-DEFAULT_HEIGHT = 100
-
+DEFAULT_WIDTH = Sass::Script::Number.new 100
+DEFAULT_HEIGHT = Sass::Script::Number.new 100
 
 module Sass::Script::Functions
 

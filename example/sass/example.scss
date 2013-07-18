@@ -1,3 +1,23 @@
-body {
-  background-image: inline-gradient(linear, 300, 1000, to left, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%)
+@import "theme";
+
+$randbow-step : 100.0/6;
+
+.result-default {
+  background-image: inline-gradient();
+  height: 100px;
+  width: 100px;
+}
+
+.result-rainbow-linear_toleft {
+  background-image: inline-gradient(linear, 500, 150, to left,
+                      red 0%,
+                      orange $randbow-step,
+                      yellow 2*$randbow-step,
+                      green 3*$randbow-step,
+                      lightskyblue 4*$randbow-step,
+                      blue 5*$randbow-step,
+                      violet 100%
+                    );
+  height: 150px;
+  width: 500px;
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test page for inline-gradient usage in Compass/Sass</title>
+        <link rel="stylesheet" href="stylesheets/example.css" type="text/css" >
+        <script type="text/javascript" src="vendor/jquery.js"></script>
+        <script type="text/javascript" src="vendor/jquery.snippet.js"></script>
+        <link rel="stylesheet" type="text/css" href="vendor/jquery.snippet.css" />
+    </head>
+    <body>
+        <div class="annotation">
+        </div>
+        <div class="examples">
+            <div class="example">
+                <h2>Default usage example</h2>
+                <div class="result result-default">
+                </div>
+                <div class="description">
+                    Default using (without arguments) is equivalent to calling:<br />
+                    <span class="inline-code">inline-gradient(linear, 100, 100, to left, #FFF 0%, #000 100%)</span>
+                </div>
+                <div class="code">
+                    <pre>
+                        some_css_selector {
+                            background-image: inline-gradient();
+                        }
+                    </pre>
+                </div>
+            </div>
+            <div class="example">
+                <h2>Rainbow gradient example</h2>
+                <div class="result result-rainbow-linear_toleft">
+                </div>
+                <div class="description">
+                    Rainbow gradient from left to right.<br />
+                    Width is 150px and height is 500px.<br />
+                    This gradient is an image, it can't be with out fix size.<br />
+                    If you need to use the same gradient with other sizes try to use CSS rule <span class="inline-code">background-size: 100% 100%</span>
+                </div>
+                <div class="code">
+                    <pre>
+                        some_css_selector {
+                            background-image: inline-gradient(linear, 150, 500, to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
+                        }
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                $(".code").find("pre").each(function (index,node) {
+                    var $node = $(node),
+                        nodeHTML = $node.html();
+                    $node.html(nodeHTML.replace(/\s{2,}/g, '').replace(/({|;)/g,'$1\n').replace(/background/,'    background'));
+                    $node.snippet("css",{style:"golden"});
+                });
+            });
+        </script>
+    </body>
+</html>
