@@ -19,22 +19,24 @@ end
 def distance2px (distance, width)
     distance = distance.to_s
     if distance.end_with?("%")
-        percents = Sass::Script::Number.new distance.gsub("%", "").strip
-        all_persents = Sass::Script::Number.new 100
+        percents = Sass::Script::Number.new(distance.gsub("%", "").strip)
+        all_persents = Sass::Script::Number.new(100)
         distance = percents.div(all_persents).times(width)
+    else
+        distance = Sass::Script::Number.new(distance.to_i)
     end
-    distance.to_i
+    distance
 end
 
 def side2angle (side)
     side2angle_object = {
-         "to_top" => "0deg",
-         "to_right" => "90deg",
-         "to_bottom" => "180deg",
-         "to_left"  => "270deg"
+         "to_top" => 0,
+         "to_right" => 90,
+         "to_bottom" => 180,
+         "to_left"  => 270
     }
-    side_name = side.to_s.gsub("\s", "_")
-    side2angle_object[side_name] or side
+    side_name = side.to_s.strip.gsub("\s", "_")
+    side2angle_object[side_name] or side.to_i
 end
 
 def color2hex (color)
@@ -77,7 +79,7 @@ end
 
 DEFAULT_CONTENT_TYPE = "image/png"
 DEFAULT_TYPE = Sass::Script::String.new "linear"
-DEFAULT_ANGLE = "to left"
+DEFAULT_ANGLE = "to bottom" #http://www.w3.org/TR/css3-images/#linear-gradient-examples to bottom is default
 DEFAULT_COLOR_STOPS = ["#FFF 0%", "#000 100%"]
 DEFAULT_WIDTH = Sass::Script::Number.new 100
 DEFAULT_HEIGHT = Sass::Script::Number.new 100
@@ -119,20 +121,18 @@ module Sass::Script::Functions
             example: inline-gradient(linear, 100, 100, to left, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%)
         DOC
 
-        angle = side2angle(angle)
-
         if color_stops.class != Array
             color_stops = color_stops.split(',')
         end
 
-        if angle.to_i == 0 or angle.to_i == 180
-            gradient_direction = 'vertical'
+        # The vertical gradient needs to change sides to be like horizonlat
+        # After creation vertical gradient just needs to be rotated
+        angle = side2angle(angle)
+        if angle % 180 == 0
             width, height = height, width
-        elsif angle.to_i == 90 or angle.to_i == 270
-            gradient_direction = 'horizontal'
-        else
-            gradient_direction = 'custom'
         end
+
+        need_rotation = angle != 90
 
         #get info from first stop color
         first_color_stop = color_stops.shift()
@@ -146,26 +146,32 @@ module Sass::Script::Functions
         image_list = Magick::ImageList.new
 
         color_stops.each do |color_stop|
+            # Making a single image for each pair of "color stop" values in color_stops.
+            # Images concats after this iterator.
+            # In this iterator there is no matter is gradient vertical or horizontal.
+            # Vertical gradient will just rotate after images concatination
             color_stop_arr = color_stop.to_s.strip.split(' ')
 
             current_color = color2hex(color_stop_arr[0])
             current_distance = distance2px(color_stop_arr[1], width)
 
-            fill = Magick::GradientFill.new(0, 0, 0, current_distance - prev_distance, prev_color, current_color)
-            image_list.new_image(current_distance - prev_distance, height.to_i, fill);
+            new_image_width = current_distance.minus(prev_distance).value.ceil
+
+            fill = Magick::GradientFill.new(0, 0, 0, new_image_width, prev_color, current_color)
+            image_list.new_image(new_image_width, height.to_i, fill);
 
             prev_distance = current_distance
             prev_color = current_color
         end
 
-        if gradient_direction == 'vertical'
-            image = image_list.append(true) #concat top to bottom images
-        else #custom and horizontal
-            image = image_list.append(false) #concat left to right images
-        end
+        image = image_list.append(false) #concat from left to right
 
-        if gradient_direction == 'custom'
-            #rotate
+        if need_rotation
+            # Magick has a different start point, difference is -90deg
+            image.rotate!(angle - 90)
+            if angle % 90 != 0
+                
+            end
         end
 
         data_uri_image = image2base64(image)

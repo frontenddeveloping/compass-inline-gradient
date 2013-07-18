@@ -3,21 +3,60 @@
 $randbow-step : 100.0/6;
 
 .result-default {
-  background-image: inline-gradient();
-  height: 100px;
-  width: 100px;
+  .sass-gradient,
+  .native-gradient {
+    height: 100px;
+    width: 100px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient();
+  }
+
+  .native-gradient {
+    background: linear-gradient(#FFF 0%, #000 100%);
+  }
 }
 
-.result-rainbow-linear_toleft {
-  background-image: inline-gradient(linear, 500, 150, to left,
-                      red 0%,
-                      orange $randbow-step,
-                      yellow 2*$randbow-step,
-                      green 3*$randbow-step,
-                      lightskyblue 4*$randbow-step,
-                      blue 5*$randbow-step,
-                      violet 100%
-                    );
-  height: 150px;
-  width: 500px;
+.result-simple {
+  .sass-gradient,
+  .native-gradient {
+    height: 100px;
+    width: 200px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient(linear, 200, 100, 90deg, red 0, green 100px, blue 200px);
+  }
+
+  .native-gradient {
+    background: linear-gradient(90deg, red 0, green 100px, blue 200px);
+  }
+}
+
+.result-rainbow {
+  .sass-gradient,
+  .native-gradient {
+    height: 70px;
+    width: 200px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient(linear, 200, 70, to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
+  }
+
+  .native-gradient {
+    background: linear-gradient(to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
+  }
+}
+.result-rotated {
+  .sass-gradient,
+  .native-gradient {
+    height: 100px;
+    width: 100px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient(linear, 100, 100, 135deg, #f90 0%, #000 100%);
+  }
+
+  .native-gradient {
+    background: linear-gradient(135deg, #f90 0%, #000 100%);
+  }
 }

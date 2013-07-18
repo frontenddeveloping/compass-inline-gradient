@@ -9,16 +9,42 @@
         <link rel="stylesheet" type="text/css" href="vendor/jquery.snippet.css" />
     </head>
     <body>
-        <div class="annotation">
+        <div class="notes">
+            <div class="toggle"></div>
+            <h3 class="notes-header">
+                Notes:
+            </h3>
+            <ol class="notes-list">
+                <li class="note">
+                    Compass inline gradient result is an image (data uri image), it can't be with out fix size.
+                    If you need to use the same gradient with other sizes try to use CSS rule <span class="inline-code">background-size: 100% 100%</span>
+                </li>
+                <li class="note">
+                    inline-gradient is Sass/Compass function. You can use it with out Compass in Sass
+                </li>
+                <li class="note">
+                    inline-gradient function use <a href="http://www.w3.org/TR/css3-images/" target="_blank">W3C</a> syntax, there is no support for browser prefix syntax.
+                    W3C syntax is using for gradient type name(linear/radial), angle/side-to-corner and color-stop values.
+                    Width and height using in pixels.
+                </li>
+            </ol>
         </div>
         <div class="examples">
             <div class="example">
                 <h2>Default usage example</h2>
-                <div class="result result-default">
-                </div>
                 <div class="description">
                     Default using (without arguments) is equivalent to calling:<br />
-                    <span class="inline-code">inline-gradient(linear, 100, 100, to left, #FFF 0%, #000 100%)</span>
+                    <span class="inline-code">inline-gradient(linear, 100, 100, to bottom, #FFF 0%, #000 100%)</span>
+                </div>
+                <div class="result result-default">
+                    <div class="result-wrapper">
+                        <h3>Inline</h3>
+                        <div class="gradient sass-gradient"></div>
+                    </div>
+                    <div class="result-wrapper">
+                        <h3>Browser</h3>
+                        <div class="gradient native-gradient"></div>
+                    </div>
                 </div>
                 <div class="code">
                     <pre>
@@ -29,19 +55,71 @@
                 </div>
             </div>
             <div class="example">
-                <h2>Rainbow gradient example</h2>
-                <div class="result result-rainbow-linear_toleft">
-                </div>
+                <h2>Simple usage example</h2>
                 <div class="description">
-                    Rainbow gradient from left to right.<br />
-                    Width is 150px and height is 500px.<br />
-                    This gradient is an image, it can't be with out fix size.<br />
-                    If you need to use the same gradient with other sizes try to use CSS rule <span class="inline-code">background-size: 100% 100%</span>
+                    Three colors 90deg rotate linear-gradient.<br />
+                    The same result you can get <span class="inline-code">inline-linear-gradient(200, 100, 90deg, red 0%, green 50%, blue 100%);</span>
+                </div>
+                <div class="result result-simple">
+                    <div class="result-wrapper">
+                        <h3>Inline</h3>
+                        <div class="gradient sass-gradient"></div>
+                    </div>
+                    <div class="result-wrapper">
+                        <h3>Browser</h3>
+                        <div class="gradient native-gradient"></div>
+                    </div>
                 </div>
                 <div class="code">
                     <pre>
                         some_css_selector {
-                            background-image: inline-gradient(linear, 150, 500, to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
+                            background-image: inline-gradient(linear, 200, 100, 90deg, red 0%, green 50%, blue 100%);
+                        }
+                    </pre>
+                </div>
+            </div>
+            <div class="example">
+                <h2>Rainbow gradient example</h2>
+                <div class="description">
+                    Rainbow gradient from left to right.<br />
+                </div>
+                <div class="result result-rainbow">
+                    <div class="result-wrapper">
+                        <h3>Inline</h3>
+                        <div class="gradient sass-gradient"></div>
+                    </div>
+                    <div class="result-wrapper">
+                        <h3>Browser</h3>
+                        <div class="gradient native-gradient"></div>
+                    </div>
+                </div>
+                <div class="code">
+                    <pre>
+                        some_css_selector {
+                            background-image: inline-gradient(linear, 500, 150, to left, red 0%, orange 16.67%, yellow 33.34%, green 50%, lightskyblue 66.67%, blue 83.33%, violet 100%);
+                        }
+                    </pre>
+                </div>
+            </div>
+            <div class="example">
+                <h2>Rotated example</h2>
+                <div class="description">
+                    Two colors 135deg rotate linear-gradient.<br />
+                </div>
+                <div class="result result-rotated">
+                    <div class="result-wrapper">
+                        <h3>Inline</h3>
+                        <div class="gradient sass-gradient"></div>
+                    </div>
+                    <div class="result-wrapper">
+                        <h3>Browser</h3>
+                        <div class="gradient native-gradient"></div>
+                    </div>
+                </div>
+                <div class="code">
+                    <pre>
+                        some_css_selector {
+                            background-image: inline-gradient(linear, 100, 100, 135deg, #f90 0%, #c96 100%);
                         }
                     </pre>
                 </div>
@@ -52,6 +130,7 @@
                 $(".code").find("pre").each(function (index,node) {
                     var $node = $(node),
                         nodeHTML = $node.html();
+                    //format hack
                     $node.html(nodeHTML.replace(/\s{2,}/g, '').replace(/({|;)/g,'$1\n').replace(/background/,'    background'));
                     $node.snippet("css",{style:"golden"});
                 });

@@ -17,17 +17,32 @@ body {
 }
 
 /* line 18, ../sass/theme.scss */
+h2 {
+  font-family: Georgia;
+  font-size: 21px;
+  font-weight: lighter;
+}
+
+/* line 24, ../sass/theme.scss */
+h3 {
+  font-family: Georgia;
+  font-size: 16px;
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
+
+/* line 31, ../sass/theme.scss */
 .code, .inline-code {
   font: 12px/14px monospace, sans-serif;
 }
 
-/* line 22, ../sass/theme.scss */
+/* line 35, ../sass/theme.scss */
 .code {
   clear: both;
   margin-right: 20px;
 }
 
-/* line 27, ../sass/theme.scss */
+/* line 40, ../sass/theme.scss */
 .inline-code {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -39,47 +54,66 @@ body {
   padding: 2px 4px;
 }
 
-/* line 36, ../sass/theme.scss */
+/* line 49, ../sass/theme.scss */
 .examples {
   overflow: hidden;
   border-right: 1px solid #ddd;
   margin-right: 400px;
 }
 
-/* line 42, ../sass/theme.scss */
+/* line 55, ../sass/theme.scss */
 .example {
   padding: 20px 10px;
 }
-/* line 44, ../sass/theme.scss */
-.example h2 {
-  font-family: Georgia;
-  font-size: 21px;
-  font-weight: lighter;
-  padding-bottom: 20px;
-}
 
-/* line 52, ../sass/theme.scss */
+/* line 59, ../sass/theme.scss */
 .result {
-  border: 1px solid #ddd;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 64, ../sass/theme.scss */
+.result-wrapper {
   float: left;
-  margin-bottom: 20px;
+  padding: 0 20px 20px 0;
 }
 
-/* line 58, ../sass/theme.scss */
+/* line 69, ../sass/theme.scss */
+.gradient {
+  border: 1px solid #ddd;
+}
+
+/* line 73, ../sass/theme.scss */
 .description {
-  padding: 0 0 10px 10px;
-  overflow: hidden;
+  padding: 10px 0;
 }
 
-/* line 63, ../sass/theme.scss */
-.annotation {
+/* line 77, ../sass/theme.scss */
+.notes {
   background-color: lemonchiffon;
   border-left: 1px solid #ddd;
   float: right;
   margin-left: -1px;
   min-height: 100%;
+  padding: 10px 10px 0;
   position: fixed;
   top: 0;
   right: 0;
   width: 400px;
+}
+
+/* line 90, ../sass/theme.scss */
+.notes-header {
+  padding-bottom: 10px;
+}
+
+/* line 94, ../sass/theme.scss */
+.notes-list {
+  font-size: 12px;
+  list-style: inside;
+}
+
+/* line 99, ../sass/theme.scss */
+.note {
+  padding-bottom: 10px;
 }

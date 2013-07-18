@@ -15,6 +15,19 @@ body {
   font: 14px/normal Helvetica, Arial, sans-serif;
 }
 
+h2 {
+  font-family: Georgia;
+  font-size: 21px;
+  font-weight: lighter;
+}
+
+h3 {
+  font-family: Georgia;
+  font-size: 16px;
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
+
 .code, .inline-code {
   font: 12px/14px monospace, sans-serif;
 }
@@ -41,33 +54,49 @@ body {
 
 .example {
   padding: 20px 10px;
-  & h2 {
-    font-family: Georgia;
-    font-size: 21px;
-    font-weight: lighter;
-    padding-bottom: 20px;
-  }
 }
 
 .result {
-  border: 1px solid #ddd;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.result-wrapper {
   float: left;
-  margin-bottom: 20px;
+  padding: 0 20px 20px 0;
+}
+
+.gradient {
+  border: 1px solid #ddd;
 }
 
 .description {
-  padding: 0 0 10px 10px;
-  overflow: hidden;
+  padding: 10px 0;
 }
 
-.annotation {
+.notes {
   background-color: lemonchiffon;
   border-left: 1px solid #ddd;
   float: right;
   margin-left: -1px;
   min-height: 100%;
+  padding: 10px 10px 0;
   position: fixed;
   top: 0;
   right: 0;
   width: 400px;
 }
+
+.notes-header {
+  padding-bottom: 10px;
+}
+
+.notes-list {
+  font-size: 12px;
+  list-style: inside;
+}
+
+.note {
+  padding-bottom: 10px;
+}
+
