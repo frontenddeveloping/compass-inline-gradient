@@ -77,7 +77,6 @@ def image2base64(image)
     Base64.encode64(image).gsub("\n","")
 end
 
-DEFAULT_CONTENT_TYPE = "image/png"
 DEFAULT_TYPE = Sass::Script::String.new "linear"
 DEFAULT_ANGLE = "to bottom" #http://www.w3.org/TR/css3-images/#linear-gradient-examples to bottom is default
 DEFAULT_COLOR_STOPS = ["#FFF 0%", "#000 100%"]
@@ -168,14 +167,20 @@ module Sass::Script::Functions
 
         if need_rotation
             # Magick has a different start point, difference is -90deg
-            image.rotate!(angle - 90)
+            angle = angle - 90;
+            image.rotate!(angle)
             if angle % 90 != 0
-                
+                deg2rad = angle / 180.0 * Math::PI
+                adding_delta_x = Math.cos( (90 - angle) / 180.0 * Math::PI ) * height.to_i
+                adding_delta_y = Math.tan(deg2rad) * width.to_i
+                adding_delta_x = adding_delta_x.abs.ceil
+                adding_delta_y = adding_delta_y.abs.ceil
+                image.scale!(width.to_i + adding_delta_x, height.to_i + adding_delta_y)
             end
         end
 
         data_uri_image = image2base64(image)
-        Sass::Script::String.new("url(data:" + DEFAULT_CONTENT_TYPE + ";base64," + data_uri_image + ")")
+        Sass::Script::String.new("url(data:image/png;base64," + data_uri_image + ")")
     end
 
     def inline_radial_gradient(width, height, angle, color_stops)
