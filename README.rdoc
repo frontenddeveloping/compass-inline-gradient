@@ -1,10 +1,10 @@
 = Compass::InlineGradient
 
 === It's a alpha release. Next week (22 - 28 July 2013) I will release beta version with:
-    * Full linear gradient support (now don't work as native angles like 23deg, 58deg and other customs)
-    * Multiple gradients (like multiple backgrounds)
-    * Radial gradient support
-    * W3C closest-side syntax
+* Full linear gradient support (now don't work as native angles like 23deg, 58deg and other customs)
+* Multiple gradients (like multiple backgrounds)
+* Radial gradient support
+* W3C closest-side syntax
 
 This is a compass/sass extension for inline(data uri) linear gradients with already image optimization.
 It convert css linear gradient syntax to data uri (base64) background-image.
