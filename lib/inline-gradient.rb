@@ -168,7 +168,6 @@ module Sass::Script::Functions
         if need_rotation
             # Magick has a different start point, difference is -90deg
             angle = angle - 90;
-            image.rotate!(angle)
             if angle % 90 != 0
                 deg2rad = angle / 180.0 * Math::PI
                 adding_delta_x = Math.cos( (90 - angle) / 180.0 * Math::PI ) * height.to_i
@@ -176,6 +175,10 @@ module Sass::Script::Functions
                 adding_delta_x = adding_delta_x.abs.ceil
                 adding_delta_y = adding_delta_y.abs.ceil
                 image.scale!(width.to_i + adding_delta_x, height.to_i + adding_delta_y)
+                image.rotate!(angle)
+                image.crop!(adding_delta_x / 2, adding_delta_y / 2, width.to_i + adding_delta_x / 2, height.to_i + adding_delta_y / 2)
+            elsif angle != 0#TODO check
+                image.rotate!(angle)
             end
         end
 
