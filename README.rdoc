@@ -17,6 +17,7 @@ But data uri (base64) has a excellent support. It's just don't work in IE 7-, an
 You will have less code and more browser support. Use it!
 
 *N.B.* inline-gradient function already using {TinyPNG API}[tinypng.org] for image optimization.
+
 *P.S.* I need this function more than anyone :) Stay online with me!
 
 == Installation
@@ -35,7 +36,7 @@ Or install it yourself as:
 
 == Usage
 
-See "example" folder in git repo for ready examples.
+See *example/example.html* for more information and ready examples.
 
 Code examples:
 
