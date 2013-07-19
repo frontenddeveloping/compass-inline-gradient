@@ -7,16 +7,17 @@
 * W3C closest-side syntax
 
 This is a compass/sass extension for inline(data uri) linear gradients with already image optimization.
-It convert css linear gradient syntax to data uri (base64) background-image.
+It converts css linear gradient syntax to data uri (base64) background-image.
 
 === Why use base64 background-images not native gradient?
-Native css gradients have a lot of prefixes, you must use filters for IE, and IE9 and Opera needs inline svg gradients.
+Native css gradients have a lot of prefixes, you must use filters for IE, IE9 and Opera needs inline svg gradients.
 Just look at {this}[http://www.colorzilla.com/gradient-editor/] terrible default example.
+
 But data uri (base64) has a excellent support. It's just don't work in IE 7-, and work fine in other browsers: desktop, mobile, everywhere.
 You will have less code and more browser support. Use it!
 
-N.B. inline-gradient function already using {TinyPNG API}[tinypng.org] for image optimization
-P.S. I need this function more than anyone :) Stay online with me!
+*N.B.* inline-gradient function already using {TinyPNG API}[tinypng.org] for image optimization.
+*P.S.* I need this function more than anyone :) Stay online with me!
 
 == Installation
 
