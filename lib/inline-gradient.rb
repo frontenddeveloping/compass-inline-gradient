@@ -98,7 +98,7 @@ module Sass::Script::Functions
         if type.to_s == "linear"
             return self.inline_linear_gradient(width, height, angle, color_stops)
         elsif type.to_s == "radial"
-            return self.inline_radial_gradient(width, height, angle, color_stops)
+            #return self.inline_radial_gradient(width, height, angle, color_stops)
         end
 
     end
@@ -186,8 +186,8 @@ module Sass::Script::Functions
         Sass::Script::String.new("url(data:image/png;base64," + data_uri_image + ")")
     end
 
-    def inline_radial_gradient(width, height, angle, color_stops)
+    #def inline_radial_gradient(width, height, angle, color_stops)
         #GradientFill with 0,0,0,0 is radial
-    end
+    #end
 
 end
