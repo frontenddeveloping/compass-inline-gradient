@@ -47,6 +47,21 @@ $randbow-step : 100.0/6;
   }
 }
 
+.result-repeat-x {
+  .sass-gradient,
+  .native-gradient {
+    height: 32px;
+    width: 100px;
+  }
+  .sass-gradient {
+    background-image: inline-gradient(linear, 1px, 32px, to bottom, #00b2d6 0%, #0675a6 100%);
+  }
+
+  .native-gradient {
+    background: repeating-linear-gradient(to bottom, #00b2d6 0, #0675a6 32px);
+  }
+}
+
 .result-rotated {
   .sass-gradient,
   .native-gradient {

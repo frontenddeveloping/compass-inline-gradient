@@ -34,7 +34,12 @@
             <div class="example">
                 <h2>Default usage example</h2>
                 <div class="description">
-                    Default using (without arguments) is equivalent to calling:<br />
+                    Default calling is the best way to check is <span class="inline-code">inline-gradient</span> calling or not.
+                    If you get background-image data uri string, it works.
+                    If you call with arguments and in your compiled css file still contains string like <span class="inline-code">inline-gradient(...)</span>, may be the args are wrong.
+                    If you think that arguments in your inline-gradient function are right, please, contact me at <a href="https://github.com/frontenddeveloping/compass-inline-gradient" target="_blank">github</a>.
+                    <br />
+                    Default using (without arguments) is equivalent to calling:
                     <span class="inline-code">inline-gradient(linear, 100, 100, to bottom, #FFF 0%, #000 100%)</span>
                 </div>
                 <div class="result result-default">
@@ -126,6 +131,31 @@
                 </div>
             </div>
             <div class="example">
+                <h2>Background repeating example</h2>
+                <div class="description">
+                    The most usage case: repeating 1px line by x-axis.<br />
+                    In CSS you must use  <span class="inline-code">background: repeating-linear-gradient(...)</span>
+                </div>
+                <div class="result result-repeat-x">
+                    <div class="result-wrapper">
+                        <h3>Inline</h3>
+                        <div class="gradient sass-gradient"></div>
+                    </div>
+                    <div class="result-wrapper">
+                        <h3>Browser</h3>
+                        <div class="gradient native-gradient"></div>
+                    </div>
+                </div>
+                <div class="code">
+                    <pre>
+                        some_css_selector {
+                            background-image: inline-gradient(linear, 1px, 32px, to bottom, #00b2d6 0%, #0675a6 100%);
+                            background-repeat: repeat-x;
+                        }
+                    </pre>
+                </div>
+            </div>
+            <div class="example">
                 <h2>Another rotated example</h2>
                 <div class="description">
                     Two colors -23deg rotate linear-gradient.<br />
@@ -156,7 +186,7 @@
                     var $node = $(node),
                         nodeHTML = $node.html();
                     //format hack
-                    $node.html(nodeHTML.replace(/\s{2,}/g, '').replace(/({|;)/g,'$1\n').replace(/background/,'    background'));
+                    $node.html(nodeHTML.replace(/\s{2,}/g, '').replace(/({|;)/g,'$1\n').replace(/background/g,'    background'));
                     $node.snippet("css",{style:"golden"});
                 });
             });

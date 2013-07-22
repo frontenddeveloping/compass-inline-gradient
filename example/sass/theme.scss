@@ -1,5 +1,8 @@
 @import "compass/css3";
 
+$notes-width: 30%;
+$separator-border: 1px solid #ddd;
+
 * {
   margin: 0;
   padding: 0;
@@ -48,8 +51,9 @@ h3 {
 
 .examples {
   overflow: hidden;
-  border-right: 1px solid #ddd;
-  margin-right: 400px;
+  border-right: $separator-border;
+  margin-right: $notes-width;
+  padding-right: 20px;
 }
 
 .example {
@@ -76,7 +80,7 @@ h3 {
 
 .notes {
   background-color: lemonchiffon;
-  border-left: 1px solid #ddd;
+  border-left: $separator-border;
   float: right;
   margin-left: -1px;
   min-height: 100%;
@@ -84,7 +88,7 @@ h3 {
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: $notes-width;
 }
 
 .notes-header {

@@ -39,28 +39,6 @@ def side2angle (side)
     side2angle_object[side_name] or side.to_i
 end
 
-def color2hex (color)
-    <<-DOC
-        Color can be:
-            - rgba
-            - rgb
-            - hex
-        Use Sass::Script::Color class
-    DOC
-
-    color = color.to_s
-
-    if color.start_with?('rgba')
-        rgba = color.split(",").map { |s| s.to_i }
-        color = Sass::Script::Color.new(rgba[0..2]).with(:alpha => rgba[3])
-    elsif color.start_with?('rba')
-        rgb = color.split(",").map { |s| s.to_i }
-        color = Sass::Script::Color.new(rgba[0..2])
-    end
-
-    color
-end
-
 def image2base64(image)
     image.format = "png"
 
@@ -77,13 +55,13 @@ def image2base64(image)
     Base64.encode64(image).gsub("\n","")
 end
 
-DEFAULT_TYPE = Sass::Script::String.new "linear"
-DEFAULT_ANGLE = "to bottom" #http://www.w3.org/TR/css3-images/#linear-gradient-examples to bottom is default
-DEFAULT_COLOR_STOPS = ["#FFF 0%", "#000 100%"]
-DEFAULT_WIDTH = Sass::Script::Number.new 100
-DEFAULT_HEIGHT = Sass::Script::Number.new 100
-
 module Sass::Script::Functions
+
+    DEFAULT_TYPE = Sass::Script::String.new "linear"
+    DEFAULT_ANGLE = "to bottom" #http://www.w3.org/TR/css3-images/#linear-gradient-examples to bottom is default
+    DEFAULT_COLOR_STOPS = ["#FFF 0%", "#000 100%"]
+    DEFAULT_WIDTH = Sass::Script::Number.new 100
+    DEFAULT_HEIGHT = Sass::Script::Number.new 100
 
     def inline_gradient(type = DEFAULT_TYPE, width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT, angle = DEFAULT_ANGLE , *color_stops)
 
@@ -136,7 +114,7 @@ module Sass::Script::Functions
         #get info from first stop color
         first_color_stop = color_stops.shift()
         first_color_stop_arr = first_color_stop.to_s.strip.split(' ')
-        first_color = color2hex(first_color_stop_arr[0])
+        first_color = first_color_stop_arr[0].to_s
         first_color_distance = first_color_stop_arr[1]
 
         prev_distance = distance2px(first_color_distance, width)
@@ -151,11 +129,12 @@ module Sass::Script::Functions
             # Vertical gradient will just rotate after images concatination
             color_stop_arr = color_stop.to_s.strip.split(' ')
 
-            current_color = color2hex(color_stop_arr[0])
+            current_color = color_stop_arr[0].to_s
             current_distance = distance2px(color_stop_arr[1], width)
 
             new_image_width = current_distance.minus(prev_distance).value.ceil
 
+            #TODO check rgba mode of Magick
             fill = Magick::GradientFill.new(0, 0, 0, new_image_width, prev_color, current_color)
             image_list.new_image(new_image_width, height.to_i, fill);
 

@@ -1,29 +1,29 @@
-/* line 3, ../sass/theme.scss */
+/* line 6, ../sass/theme.scss */
 * {
   margin: 0;
   padding: 0;
   outline: 0;
 }
 
-/* line 9, ../sass/theme.scss */
+/* line 12, ../sass/theme.scss */
 html, body {
   min-height: 100%;
   height: 100%;
 }
 
-/* line 14, ../sass/theme.scss */
+/* line 17, ../sass/theme.scss */
 body {
   font: 14px/normal Helvetica, Arial, sans-serif;
 }
 
-/* line 18, ../sass/theme.scss */
+/* line 21, ../sass/theme.scss */
 h2 {
   font-family: Georgia;
   font-size: 21px;
   font-weight: lighter;
 }
 
-/* line 24, ../sass/theme.scss */
+/* line 27, ../sass/theme.scss */
 h3 {
   font-family: Georgia;
   font-size: 16px;
@@ -31,18 +31,18 @@ h3 {
   padding-bottom: 10px;
 }
 
-/* line 31, ../sass/theme.scss */
+/* line 34, ../sass/theme.scss */
 .code, .inline-code {
   font: 12px/14px monospace, sans-serif;
 }
 
-/* line 35, ../sass/theme.scss */
+/* line 38, ../sass/theme.scss */
 .code {
   clear: both;
   margin-right: 20px;
 }
 
-/* line 40, ../sass/theme.scss */
+/* line 43, ../sass/theme.scss */
 .inline-code {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -54,44 +54,45 @@ h3 {
   padding: 2px 4px;
 }
 
-/* line 49, ../sass/theme.scss */
+/* line 52, ../sass/theme.scss */
 .examples {
   overflow: hidden;
-  border-right: 1px solid #ddd;
-  margin-right: 400px;
+  border-right: 1px solid #dddddd;
+  margin-right: 30%;
+  padding-right: 20px;
 }
 
-/* line 55, ../sass/theme.scss */
+/* line 59, ../sass/theme.scss */
 .example {
   padding: 20px 10px;
 }
 
-/* line 59, ../sass/theme.scss */
+/* line 63, ../sass/theme.scss */
 .result {
   display: inline-block;
   vertical-align: top;
 }
 
-/* line 64, ../sass/theme.scss */
+/* line 68, ../sass/theme.scss */
 .result-wrapper {
   float: left;
   padding: 0 20px 20px 0;
 }
 
-/* line 69, ../sass/theme.scss */
+/* line 73, ../sass/theme.scss */
 .gradient {
   border: 1px solid #ddd;
 }
 
-/* line 73, ../sass/theme.scss */
+/* line 77, ../sass/theme.scss */
 .description {
   padding: 10px 0;
 }
 
-/* line 77, ../sass/theme.scss */
+/* line 81, ../sass/theme.scss */
 .notes {
   background-color: lemonchiffon;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #dddddd;
   float: right;
   margin-left: -1px;
   min-height: 100%;
@@ -99,21 +100,21 @@ h3 {
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 30%;
 }
 
-/* line 90, ../sass/theme.scss */
+/* line 94, ../sass/theme.scss */
 .notes-header {
   padding-bottom: 10px;
 }
 
-/* line 94, ../sass/theme.scss */
+/* line 98, ../sass/theme.scss */
 .notes-list {
   font-size: 12px;
   list-style: inside;
 }
 
-/* line 99, ../sass/theme.scss */
+/* line 103, ../sass/theme.scss */
 .note {
   padding-bottom: 10px;
 }
