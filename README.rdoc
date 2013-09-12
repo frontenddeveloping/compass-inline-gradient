@@ -1,6 +1,6 @@
 = Compass::InlineGradient
 
-=== It's a alpha release. Next week (22 - 28 July 2013) I will release beta version with:
+=== It's a alpha release. Soon:
 * Full linear gradient support (now don't work as native angles like 23deg, 58deg and other customs)
 * Multiple gradients (like multiple backgrounds)
 * Radial gradient support
